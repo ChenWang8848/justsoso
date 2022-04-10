@@ -18,7 +18,7 @@ case $i in
   ptopid="${udata%&*}"
   sid="${udata#*&sid=}" #登录获取ptopid和sid
   curl -d "day6=b&did=1&men6=a" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o /dev/null #进入确认界面
-  curl -d "@myvs0.txt" -d "jingdu=113.25&weidu=35.22&ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
+  curl -d "@myvs0.txt" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
   udata=$(sed -n '24,26p' temp.txt)
   echo "$udata" >> result.html
   ;;
@@ -30,7 +30,7 @@ case $i in
   ptopid="${udata%&*}"
   sid="${udata#*&sid=}" #登录获取ptopid和sid
   curl -d "day6=b&did=1&men6=a" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o /dev/null #进入确认界面
-  curl -d "@myvs1.txt" -d "jingdu=114.85&weidu=34.07&ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
+  curl -d "@myvs1.txt" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
   udata=$(sed -n '24,26p' temp.txt)
   echo "$udata" >> result.html
   ;;
@@ -42,7 +42,7 @@ case $i in
   ptopid="${udata%&*}"
   sid="${udata#*&sid=}" #登录获取ptopid和sid
   curl -d "day6=b&did=1&men6=a" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o /dev/null #进入确认界面
-  curl -d "@myvs2.txt" -d "jingdu=115.6653&weidu=34.3745&ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
+  curl -d "@myvs2.txt" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
   udata=$(sed -n '24,26p' temp.txt)
   echo "$udata" >> result.html
   ;;
