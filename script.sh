@@ -16,9 +16,15 @@ udata=${udata%\"\}\}*}
 ptopid="${udata%&*}"
 sid="${udata#*&sid=}" #登录获取ptopid和sid
 sleep 2
-curl -d "day6=b&did=1&men6=a&fun18=819" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o /dev/null #进入确认界面
+curl -d "ptopid=$ptopid&sid=$sid&fun2=" -s $url2 -o temp1.txt #获取fun18
+udata=$(sed -n '33p' temp1.txt)
+udata=${udata#*fun18\"}
+udata=$(udata#value=\")
+fun18="${udata%%\"*}" 
+
+curl -d "did=1&men6=a" -d "fun18=$fun18&ptopid=$ptopid&sid=$sid" -s $url2 -o /dev/null #进入确认界面
 sleep 2
-curl -d "@myvs.txt" -d "ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
+curl -d "@myvs.txt" -d "fun18=$fun18&ptopid=$ptopid&sid=$sid" -s $url2 -o temp.txt #打卡
 udata=$(sed -n '24,26p' temp.txt)
 echo "$udata" > result.html
 done
